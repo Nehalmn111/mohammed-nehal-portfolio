@@ -497,6 +497,7 @@ section.in-view{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  align-items: start;
 }
 
 .project-card{
@@ -547,6 +548,77 @@ section.in-view{
   font-size: 14px;
   color: var(--text-muted);
   margin: 0 0 16px;
+}
+
+/* project story (expandable "what made me build this" panel) */
+.story-toggle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 11px 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease;
+}
+
+.story-toggle:hover{
+  border-color: var(--accent1);
+  background: var(--surface-hover);
+}
+
+.story-toggle .chev{
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--accent2);
+  transition: transform .25s ease;
+}
+
+.story-toggle[aria-expanded="true"] .chev{
+  transform: rotate(180deg);
+}
+
+.project-story{
+  margin-top: 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  animation: story-in .3s ease;
+}
+
+.project-story[hidden]{
+  display: none;
+}
+
+@keyframes story-in{
+  from{ opacity: 0; transform: translateY(-6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+.story-img{
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.project-story p{
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.project-story p:last-child{
+  margin-bottom: 0;
 }
 
 /* education */
